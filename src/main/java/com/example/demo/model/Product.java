@@ -21,9 +21,13 @@ public class Product {
     private Date date;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId",referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "userId")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "agence")
+    private Agence agence;
 
     public String getTitle() {
         return title;
@@ -73,13 +77,19 @@ public class Product {
         this.productId = productId;
     }
 
-
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Agence getAgence() {
+        return agence;
+    }
+
+    public void setAgence(Agence agence) {
+        this.agence = agence;
     }
 }

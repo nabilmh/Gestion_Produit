@@ -23,6 +23,8 @@ public class UserController {
     private UserRepository userRepo;
     @Autowired
     private ProductRepository productRepo;
+
+    private Product product;
     @PostConstruct
     public void user(){
         userService.user();
@@ -32,12 +34,13 @@ public class UserController {
         return productSer.getAllProduct();
     }
 
-    @PostMapping("/user/{userId}/addnewproduct")
-    User addNewProduct(@PathVariable int userId, @PathVariable int productId){
-        Product product = productRepo.findById(productId).get();
-        User user = userRepo.findById(userId).get();
-        user.addnewProduct(product);
-        productSer.addNewProduct(product);
+    @GetMapping("/")
+    public List<Product> onlyforvisitor(){
+        return productSer.getAllProduct();
+    }
+
+    @PostMapping("/user")
+    public User createUser( @RequestBody User user) {
         return userRepo.save(user);
     }
 

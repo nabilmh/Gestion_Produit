@@ -3,6 +3,7 @@ package com.example.demo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,9 +19,6 @@ public class User {
     @Column(name = "Password")
     private String password;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "user")
-    private Set<Product> products = new HashSet<>();
 
     public User() {
 
@@ -32,11 +30,12 @@ public class User {
         this.password = password;
 
     }
-    public int getId() {
+
+    public int getUserId() {
         return userId;
     }
 
-    public void setId(Integer userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -56,11 +55,6 @@ public class User {
         this.password = password;
     }
 
-    public Set<Product> getProducts() {
-        return products;
-    }
-    public void addnewProduct(Product product){
-        products.add(product);
-    }
+
 
 }

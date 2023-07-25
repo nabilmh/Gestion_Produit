@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Agence;
 import com.example.demo.model.Product;
+import com.example.demo.model.User;
+import com.example.demo.repository.AgenceRepository;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.ProductService;
@@ -15,6 +18,9 @@ public class ProductController {
     private ProductService productSer;
     @Autowired
     private UserRepository userRepo;
+
+    @Autowired
+    private AgenceRepository agenceRepo;
     @Autowired
     private ProductRepository productRepo;
 
@@ -22,7 +28,16 @@ public class ProductController {
     public Product addNewProduct(@RequestBody Product product){
         return productSer.addNewProduct(product);
     }
-    @GetMapping("/user/{id}/allproducts")
+
+    @PostMapping("/user/{userId}/addnewproduct")
+    public Product  addNewProduct(@PathVariable("userId") int userId,@RequestBody Product product){
+        User user = userRepo.findById(userId).get();
+
+        product.setUser(user);
+        System.out.println(user.getUserId());
+        return productSer.addNewProduct(product);
+    }
+    @GetMapping("/user/{userId}/allproducts")
     public List<Product> getAllProduct(){
         return productSer.getAllProduct();
     }
