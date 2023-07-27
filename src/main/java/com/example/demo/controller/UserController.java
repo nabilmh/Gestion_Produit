@@ -29,9 +29,9 @@ public class UserController {
     public void user(){
         userService.user();
     }
-    @GetMapping("/user/{userid}")
-    public List<Product> getAllProduct(){
-        return productSer.getAllProduct();
+    @GetMapping("/users")
+    public List<User> getAllUsers(){
+        return userService.getAllUser();
     }
 
     @GetMapping("/")
@@ -43,5 +43,19 @@ public class UserController {
     public User createUser( @RequestBody User user) {
         return userRepo.save(user);
     }
+
+    @GetMapping("/users/{userId}")
+    public User getoneUser(@PathVariable("userId") int userId){
+        User user = userRepo.findById(userId).get();
+        return user;
+    }
+
+    @DeleteMapping("/users/{userId}")
+    public void deleteUser(@PathVariable("userId") int userId){
+        User user = userRepo.findById(userId).get();
+        userService.deleteUser(userId);
+    }
+
+
 
 }

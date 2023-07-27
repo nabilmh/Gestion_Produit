@@ -15,6 +15,13 @@ public class AgenceService {
     @Autowired
     private AgenceRepository agenceRepo;
 
+    @Autowired
+    private ProductRepository productRepo;
+
+    private int productId;
+
+    private List<Product> products;
+
     public Agence addNewAgence(Agence agence){
         return agenceRepo.save(agence);
     }

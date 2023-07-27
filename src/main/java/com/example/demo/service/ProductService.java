@@ -20,6 +20,10 @@ public class ProductService {
         return (List<Product>) productRepo.findAll();
     }
 
+    public void oneProduct(Product product){
+        productRepo.findById(product.getProductId());
+    }
+
     public void deleteProduct(int id){
         productRepo.deleteById(id);
     }

@@ -13,8 +13,7 @@ public class Agence {
     private String title;
     private String Address;
 
-    @OneToMany(mappedBy = "agence")
-    private List<Product> product;
+
 
     public int getAgenceId() {
         return agenceId;
@@ -42,11 +41,5 @@ public class Agence {
         Address = address;
     }
 
-    public List<Product> getProduct() {
-        return product;
-    }
 
-    public void setProduct(List<Product> product) {
-        this.product = product;
-    }
 }

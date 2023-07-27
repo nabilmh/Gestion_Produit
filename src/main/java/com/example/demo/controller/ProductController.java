@@ -29,21 +29,25 @@ public class ProductController {
         return productSer.addNewProduct(product);
     }
 
-    @PostMapping("/user/{userId}/addnewproduct")
-    public Product  addNewProduct(@PathVariable("userId") int userId,@RequestBody Product product){
-        User user = userRepo.findById(userId).get();
+    @PostMapping("/products")
+    public Product  addProduct(@RequestBody Product product){
 
-        product.setUser(user);
-        System.out.println(user.getUserId());
         return productSer.addNewProduct(product);
     }
-    @GetMapping("/user/{userId}/allproducts")
-    public List<Product> getAllProduct(){
+    @GetMapping("/products")
+    public List<Product> getAllProducts(){
+
         return productSer.getAllProduct();
     }
 
-    @DeleteMapping("/deleteproduct/{id}")
-    public void deleteProduct(@PathVariable("id") int productId){
+    @GetMapping("/products/{productId}")
+    public Product oneProduct(@PathVariable("productId") int productId){
+        Product product = productRepo.findById(productId).get();
+        return product;
+    }
+
+    @DeleteMapping("/products/{productId}")
+    public void deleteProduct(@PathVariable("productId") int productId){
         productSer.deleteProduct(productId);
     }
 }
