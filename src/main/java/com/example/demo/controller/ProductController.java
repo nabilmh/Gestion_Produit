@@ -24,7 +24,7 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepo;
 
-    @PostMapping("/user/addnewproduct")
+    @PostMapping("/")
     public Product addNewProduct(@RequestBody Product product){
         return productSer.addNewProduct(product);
     }

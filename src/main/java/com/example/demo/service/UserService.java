@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.Role;
 import com.example.demo.model.Agence;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ public class UserService {
         User admin = new User();
         admin.setUsername("admin");
         admin.setPassword("admin");
+        admin.setRole(Role.SuperUser);
         userRepo.save(admin);
     }
 

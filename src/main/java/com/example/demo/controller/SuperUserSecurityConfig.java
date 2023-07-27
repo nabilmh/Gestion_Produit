@@ -22,8 +22,8 @@ public class SuperUserSecurityConfig{
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests().requestMatchers("/").permitAll()
-                .requestMatchers("/users/**", "/agence/**").hasRole("SuperUser")
-                .requestMatchers("/products").hasRole("User")
+                .requestMatchers("/users/**", "/agencies/**").hasRole("SuperUser")
+                .requestMatchers("/products/**").hasRole("User")
                 .anyRequest().authenticated();
 
         return http.build();
