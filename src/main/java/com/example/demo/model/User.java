@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.example.demo.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -19,17 +20,20 @@ public class User {
     @Column(name = "Password")
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 
 
     public User() {
 
     }
-    public User(int userId, String username, String password) {
+    public User(int userId, String username, String password,Role role) {
         super();
         this.userId = userId;
         this.username = username;
         this.password = password;
+        this.role = role;
 
     }
 
@@ -57,6 +61,11 @@ public class User {
         this.password = password;
     }
 
+    public Role getRole() {
+        return role;
+    }
 
-
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }
