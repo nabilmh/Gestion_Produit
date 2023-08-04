@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.Role;
 import com.example.demo.model.Product;
 import com.example.demo.model.User;
 import com.example.demo.repository.ProductRepository;
@@ -28,5 +29,15 @@ public class ProductService {
         productRepo.deleteById(id);
     }
 
+
+    public void product(){
+        Product prd = new Product();
+        prd.setTitle("tv");
+        prd.setPrice(5000);
+        prd.setDate(null);
+        prd.setDescription("product description");
+        prd.setQuantity("2");
+        productRepo.save(prd);
+    }
 
 }

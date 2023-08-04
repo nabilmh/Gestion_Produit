@@ -14,7 +14,7 @@ public class Agence {
     private String Address;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn
     private User user;
 
     public int getAgenceId() {

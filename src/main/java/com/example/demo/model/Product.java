@@ -22,11 +22,11 @@ public class Product {
 
 
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "agence")
+    @JoinColumn
     private Agence agence;
 
     public String getTitle() {
@@ -92,4 +92,6 @@ public class Product {
     public void setAgence(Agence agence) {
         this.agence = agence;
     }
+
+
 }

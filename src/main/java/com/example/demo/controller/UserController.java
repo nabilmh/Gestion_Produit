@@ -8,12 +8,21 @@ import com.example.demo.service.ProductService;
 import com.example.demo.service.UserService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class UserController {
+
+
+
     @Autowired
     private UserService userService;
     @Autowired
@@ -29,15 +38,14 @@ public class UserController {
     public void user(){
         userService.user();
     }
+
+
     @GetMapping("/users")
+    @ResponseStatus(value = HttpStatus.OK)
     public List<User> getAllUsers(){
         return userService.getAllUser();
     }
 
-    @GetMapping("/")
-    public List<Product> onlyforvisitor(){
-        return productSer.getAllProduct();
-    }
 
     @PostMapping("/user")
     public User createUser( @RequestBody User user) {

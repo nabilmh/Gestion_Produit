@@ -12,12 +12,11 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 public class User {
-    @Column(name = "ID")
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
-    @Column(name = "Username")
+
     private String username;
-    @Column(name = "Password")
     private String password;
 
     @Enumerated(EnumType.STRING)

@@ -10,11 +10,13 @@ import com.example.demo.service.AgenceService;
 import com.example.demo.service.ProductService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class AgenceController {
     @Autowired
     private AgenceService agenceSer;
@@ -31,6 +33,7 @@ public class AgenceController {
         return agenceSer.addNewAgence(agence);
     }
     @GetMapping("/agencies")
+    @ResponseStatus(value = HttpStatus.OK)
     public List<Agence> getAllAgences(){
 
         return agenceSer.getAllAgence();
