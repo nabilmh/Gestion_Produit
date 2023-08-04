@@ -40,8 +40,8 @@ public class SuperUserSecurityConfig{
 
        http
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/users/**","/agencies/**").hasAuthority("SUPERUSER")
-                        .requestMatchers("/products/**").hasAuthority("USER")
+                        .requestMatchers("/users/**","/agencies/**").hasAuthority("SuperUser")
+                        .requestMatchers("/products/**").hasAuthority("User")
                         .anyRequest().authenticated()
                 )
                .userDetailsService(myUserDetailsService)
