@@ -10,11 +10,13 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -41,11 +43,15 @@ public class UserController {
 
 
     @GetMapping("/users")
-    @ResponseStatus(value = HttpStatus.OK)
+    @PreAuthorize("hasAuthority('User')")
     public List<User> getAllUsers(){
         return userService.getAllUser();
     }
 
+    @GetMapping("/messages")
+    public ResponseEntity<List<String>> messages(){
+        return ResponseEntity.ok(Arrays.asList("first","second"));
+    }
 
     @PostMapping("/user")
     public User createUser( @RequestBody User user) {

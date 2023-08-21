@@ -11,6 +11,7 @@ import com.example.demo.service.UserService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class ProductController {
         return productSer.addNewProduct(product);
     }
     @GetMapping("/products")
-    @ResponseStatus(value = HttpStatus.OK)
+    @PreAuthorize("hasAuthority('SuperUser')")
     public List<Product> getAllProducts(){
 
         return productSer.getAllProduct();
