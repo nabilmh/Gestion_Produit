@@ -37,16 +37,6 @@ public class AuthenticationController {
         return authentication;
     }
 
-    /*@GetMapping("/login")
-    public Authentication authentication(Authentication authentication){
-        return authentication;
-    }*/
-
-    @GetMapping("/")
-    @ResponseStatus(value = HttpStatus.OK)
-    public String login(){
-        return "you are in the application";
-    }
 
 
 }
